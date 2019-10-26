@@ -5,12 +5,12 @@ module.exports = {
     storage: multer.diskStorage({
         destination: path.resolve(__dirname, '..', '..', 'uploads'),
         filename: (req, file, cb) => {
-            //const ext = path.extname(file.originalname),
-            //const name = path.basename(file.originalname, ext);
+            const ext = path.extname(file.originalname);
+            const nome = path.basename(file.originalname, ext);
 
-            //cb(null, `${name}-${Date.now()}${ext}`);
+           cb(null, `${nome}_${Date.now()}${ext}`);
 
-            cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+            //cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
         },
     }),
 
